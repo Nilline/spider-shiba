@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="lock">
 
 <head>
 	<title>Spider Shiba</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20221020091544">
+	<link rel="stylesheet" href="css/style.min.css?_v=20221022212217">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,42 +14,203 @@
 
 <body>
 	<div class="wrapper">
+		<style>
+			@font-face {
+				font-family: Nunito;
+				font-display: swap;
+				src: url("../fonts/Nunito-ExtraBold.woff2") format("woff2"), url("../fonts/Nunito-ExtraBold.woff") format("woff");
+				font-weight: 800;
+				font-style: normal;
+			}
+
+			.lock body {
+				overflow: hidden;
+				touch-action: none;
+			}
+
+			.loader {
+				position: fixed;
+				width: 100vw;
+				height: 100vh;
+				top: 0;
+				left: 0;
+				background: linear-gradient(260.81deg, #162758 2.47%, #0a142a 97.49%);
+				z-index: 999;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				row-gap: 30px;
+				transition: opacity 0.8s ease 0s, visibility 0.8s ease 0s;
+			}
+
+			.loader.hidden {
+				opacity: 0;
+				visibility: hidden;
+			}
+
+			.loader__picture {
+				width: 250px;
+				flex: 0 0 250px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+			}
+
+			.loader__decor {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+			}
+
+			.loader__decor-item {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				animation: rotate-loader 15s infinite linear;
+			}
+
+			.loader__decor-item svg {
+				width: 100%;
+			}
+
+			.loader__decor-item_1 {
+				width: 170px;
+				height: 170px;
+				animation-duration: 10s;
+			}
+
+			.loader__decor-item_1 svg circle {
+				stroke-dasharray: 65;
+			}
+
+			.loader__decor-item_2 {
+				width: 215px;
+				height: 215px;
+				animation-direction: reverse;
+			}
+
+			.loader__decor-item_2 svg circle {
+				stroke-dasharray: 80;
+			}
+
+			.loader__decor-item_3 {
+				width: 100%;
+				height: 100%;
+				animation-duration: 20s;
+			}
+
+			.loader__decor-item_3 svg circle {
+				stroke-dasharray: 93;
+			}
+
+			.loaded .loader__decor-item {
+				animation-play-state: paused;
+			}
+
+			.loader__image {
+				flex: 0 0 95px;
+			}
+
+			.loader__image img {
+				width: 100%;
+			}
+
+			.loader__title-block {
+				position: relative;
+			}
+
+			.loader__title {
+				font-family: "Nunito", "SF", sans-serif;
+				font-size: 36px;
+				line-height: 1.361;
+				font-weight: 800;
+				color: #fff;
+			}
+
+			.loader__title span {
+				color: #e11d2e;
+			}
+
+			.loader__progress {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 0;
+				height: 3px;
+				background-color: #fff;
+				border-radius: 100px;
+				transition: width 0.7s linear;
+			}
+		</style>
+		<div class="loader">
+			<div class="loader__picture">
+				<div class="loader__decor">
+					<span class="loader__decor-item loader__decor-item_1">
+						<svg width="171" height="171" viewBox="0 0 171 171" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<circle cx="85.8865" cy="85.8864" r="83" transform="rotate(-150 85.8865 85.8864)" stroke="#E11D2E" stroke-width="4" stroke-dasharray="0 107 171 0" />
+						</svg>
+					</span>
+					<span class="loader__decor-item loader__decor-item_2">
+						<svg width="215" height="215" viewBox="0 0 215 215" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<circle cx="107.5" cy="107.5" r="106" stroke="#E11D2E" stroke-width="3" stroke-dasharray="0 67 179 205" />
+						</svg>
+					</span>
+					<span class="loader__decor-item loader__decor-item_3">
+						<svg width="250" height="250" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<circle cx="124.999" cy="125" r="124" stroke="#E11D2E" stroke-width="2" stroke-dasharray="146 136" />
+						</svg>
+					</span>
+				</div>
+				<div class="loader__image">
+					<img src="img/icons/spidershiba.svg" alt="SpiderShiba icon">
+				</div>
+			</div>
+			<div class="loader__title-block">
+				<div class="loader__title">SpiderShiba <span>Inu</span></div>
+				<span class="loader__progress"></span>
+			</div>
+		</div>
 		<header class="header">
 			<div class="header__container">
-				<div class="header__logo">
+				<a href="#" class="header__logo" data-goto="#top" data-goto-speed="1000">
 					<img src="img/icons/logo.svg" alt="Logo">
-				</div>
+				</a>
 				<div class="header__menu menu">
 					<button type="button" class="menu__icon icon-menu"><span></span></button>
 					<nav class="menu__body">
 						<div class="menu__inner">
 							<ul class="menu__list">
 								<li class="menu__item">
-									<a href="#" class="menu__link">How it works</a>
+									<a href="#" class="menu__link" data-goto="#how-if-works" data-goto-header data-goto-speed="1000">How it works</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">Play and earn</a>
+									<a href="#" class="menu__link" data-goto="#play" data-goto-header data-goto-speed="1000">Play and earn</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">Roadmap</a>
+									<a href="#" class="menu__link" data-goto="#roadmap" data-goto-header data-goto-speed="1000">Roadmap</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">Team</a>
+									<a href="#" class="menu__link" data-goto="#team" data-goto-header data-goto-speed="1000">Team</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">Partners&Investors</a>
+									<a href="#" class="menu__link" data-goto="#partners" data-goto-header data-goto-speed="1000">Partners&Investors</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">Why invest in SpiderShiba</a>
+									<a href="#" class="menu__link" data-goto="#invest" data-goto-header data-goto-speed="1000">Why invest in SpiderShiba</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">Tokenomics</a>
+									<a href="#" class="menu__link" data-goto="#tokenomics" data-goto-header data-goto-speed="1000">Tokenomics</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">FAQ</a>
+									<a href="#" class="menu__link" data-goto="#questions" data-goto-header data-goto-speed="1000">FAQ</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">Community</a>
+									<a href="#" class="menu__link" data-goto="#community" data-goto-header data-goto-speed="1000">Community</a>
 								</li>
 							</ul>
 							<div class="menu__button-media"></div>
@@ -61,16 +222,16 @@
 				</div>
 			</div>
 		</header>
-		<main class="page">
-			<div class="page__mainscreen mainscreen">
+		<main class="page" id="top">
+			<div data-decor-body class="page__mainscreen mainscreen">
 				<div class="mainscreen__container">
 					<div class="mainscreen__decor decor-mainscreen">
-						<span class="decor-mainscreen__decor1"></span>
-						<span class="decor-mainscreen__decor2"></span>
-						<span class="decor-mainscreen__decor3"></span>
-						<span class="decor-mainscreen__decor4"></span>
-						<span class="decor-mainscreen__decor5"></span>
-						<span class="decor-mainscreen__decor6"></span>
+						<span data-decor-item class="decor-mainscreen__decor1"></span>
+						<span data-decor-item class="decor-mainscreen__decor2"></span>
+						<span data-decor-item class="decor-mainscreen__decor3"></span>
+						<span data-decor-item class="decor-mainscreen__decor4"></span>
+						<span data-decor-item class="decor-mainscreen__decor5"></span>
+						<span data-decor-item class="decor-mainscreen__decor6"></span>
 					</div>
 					<div class="mainscreen__row">
 						<div class="mainscreen__column">
@@ -129,7 +290,7 @@
 					</div>
 				</div>
 			</div>
-			<div data-watch data-watch-threshold="0.2" data-watch-once class="page__spider spider">
+			<div data-watch data-watch-once data-watch-threshold="0.2" data-watch-once class="page__spider spider">
 				<div class="spider__container">
 					<div class="spider__coins coins-block">
 						<div class="coins-block__coin">
@@ -188,13 +349,13 @@
 					</div>
 				</div>
 			</div>
-			<div data-watch data-watch-threshold="0.2" class="page__how-if-works how-if-works">
+			<div data-watch data-watch-once data-watch-threshold="0.2" class="page__how-if-works how-if-works" id="how-if-works">
 				<div class="how-if-works__container">
 					<div class="how-if-works__header header-titles header-titles_anim-before">
 						<h2 class="header-titles__title">How it works?</h2>
 					</div>
 					<div class="how-if-works__row">
-						<div data-watch data-watch-threshold="0.2" class="how-if-works__column">
+						<div data-watch data-watch-threshold="0.2" data-watch-once class="how-if-works__column">
 							<div class="how-if-works__card">
 								<div class="how-if-works__block-icon how-if-works__block-icon_red">
 									<img src="img/icons/Ecosystem.svg" alt="Ecosystem icon">
@@ -211,7 +372,7 @@
 								</div>
 							</div>
 						</div>
-						<div data-watch data-watch-threshold="0.2" class="how-if-works__column">
+						<div data-watch data-watch-threshold="0.2" data-watch-once class="how-if-works__column">
 							<div class="how-if-works__card">
 								<div class="how-if-works__block-icon how-if-works__block-icon_orange">
 									<img src="img/icons/earn.svg" alt="earn icon">
@@ -232,7 +393,7 @@
 								</div>
 							</div>
 						</div>
-						<div data-watch data-watch-threshold="0.2" class="how-if-works__column">
+						<div data-watch data-watch-threshold="0.2" data-watch-once class="how-if-works__column">
 							<div class="how-if-works__card">
 								<div class="how-if-works__block-icon how-if-works__block-icon_blue">
 									<img src="img/icons/defi.svg" alt="defi icon">
@@ -249,7 +410,7 @@
 					</div>
 				</div>
 			</div>
-			<div data-watch data-watch-threshold="0.2" class="page__play play">
+			<div data-watch data-watch-once data-watch-threshold="0.2" class="page__play play" id="play">
 				<div class="play__container">
 					<div class="play__header header-titles header-titles_anim-before">
 						<h2 class="header-titles__title">Play to earn</h2>
@@ -309,7 +470,7 @@
 					</div>
 				</div>
 			</div>
-			<div data-watch data-watch-threshold="0.2" class="page__invest invest">
+			<div data-watch data-watch-once data-watch-threshold="0.2" class="page__invest invest invest_before-item" id="invest">
 				<div class="invest__container">
 					<div class="invest__row">
 						<div class="invest__column invest__column_decor">
@@ -354,7 +515,7 @@
 					</div>
 				</div>
 			</div>
-			<div data-watch data-watch-threshold="0.2" class="page__roadmap roadmap">
+			<div data-watch data-watch-once data-watch-threshold="0.2" class="page__roadmap roadmap" id="roadmap">
 				<div class="roadmap__container">
 					<div class="roadmap__header header-titles header-titles_anim-before">
 						<h2 class="header-titles__title">Roadmap</h2>
@@ -438,10 +599,10 @@
 					</ol>
 				</div>
 			</div>
-			<div data-watch data-watch-threshold="0.2" class="page__team team">
+			<div data-watch data-watch-once data-watch-threshold="0.2" class="page__team team">
 				<div class="team__container">
 					<div class="team__header header-titles header-titles_anim-before">
-						<h2 class="header-titles__title">Team</h2>
+						<h2 class="header-titles__title" id="team">Team</h2>
 					</div>
 					<div class="team__slider-wrapper">
 						<div class="team__slider swiper">
@@ -499,7 +660,7 @@
 						</div>
 						<div class="team__pagination-slider"></div>
 					</div>
-					<div class="team__partners partners">
+					<div class="team__partners partners" id="partners">
 						<div class="partners__header header-titles header-titles_anim-before">
 							<h2 class="header-titles__title">Partners & Investors</h2>
 						</div>
@@ -538,10 +699,10 @@
 					</div>
 				</div>
 			</div>
-			<div data-watch data-watch-threshold="0.2" class="page__tokenomics tokenomics">
+			<div data-watch data-watch-once data-watch-threshold="0.2" class="page__tokenomics tokenomics">
 				<div class="tokenomics__container">
 					<div class="tokenomics__header header-titles header-titles_anim-before">
-						<h2 class="header-titles__title">Tokenomics</h2>
+						<h2 class="header-titles__title" id="tokenomics">Tokenomics</h2>
 					</div>
 					<div class="tokenomics__row">
 						<div class="tokenomics__column tokenomics__column_left">
@@ -549,21 +710,21 @@
 								<li class="tokenomics__item">
 									<a href="#" class="tokenomics__inner-item">
 										<div class="tokenomics__decor-block"></div>
-										<h5 class="tokenomics__title"><span data-color="#4E00FF">19%</span> on marketing</h5>
+										<h5 class="tokenomics__title"><span data-color="#4E00FF" data-tokenomics-value="19">19%</span> on marketing</h5>
 										<p class="tokenomics__text">Thanks to our ecosystem you will be able to earn passively and actively</p>
 									</a>
 								</li>
 								<li class="tokenomics__item">
 									<a href="#" class="tokenomics__inner-item">
 										<div class="tokenomics__decor-block"></div>
-										<h5 class="tokenomics__title"><span data-color="#FF850B">5%</span> for founders, <span data-color="#663090">6%</span> stacked</h5>
+										<h5 class="tokenomics__title"><span data-color="#FF850B" data-tokenomics-value="5">5%</span> for founders, <span data-color="#663090" data-tokenomics-value="6">6%</span> stacked</h5>
 										<p class="tokenomics__text">Thanks to our ecosystem you will be able to earn passively and actively</p>
 									</a>
 								</li>
 								<li class="tokenomics__item">
 									<a href="#" class="tokenomics__inner-item">
 										<div class="tokenomics__decor-block"></div>
-										<h5 class="tokenomics__title"><span data-color="#1DBEE1">30%</span> for liquidity</h5>
+										<h5 class="tokenomics__title"><span data-color="#1DBEE1" data-tokenomics-value="30">30%</span> for liquidity</h5>
 										<p class="tokenomics__text">Thanks to our ecosystem you will be able to earn passively and actively</p>
 									</a>
 								</li>
@@ -577,21 +738,21 @@
 								<li class="tokenomics__item">
 									<a href="#" class="tokenomics__inner-item">
 										<div class="tokenomics__decor-block"></div>
-										<h5 class="tokenomics__title"><span data-color="#133D81">10%</span> for advisors</h5>
+										<h5 class="tokenomics__title"><span data-color="#133D81" data-tokenomics-value="10">10%</span> for advisors</h5>
 										<p class="tokenomics__text">Thanks to our ecosystem you will be able to earn passively and actively</p>
 									</a>
 								</li>
 								<li class="tokenomics__item">
 									<a href="#" class="tokenomics__inner-item">
 										<div class="tokenomics__decor-block"></div>
-										<h5 class="tokenomics__title">P2e <span data-color="#FF0000">15%</span></h5>
+										<h5 class="tokenomics__title">P2e <span data-color="#FF0000" data-tokenomics-value="15">15%</span></h5>
 										<p class="tokenomics__text">Thanks to our ecosystem you will be able to earn passively and actively</p>
 									</a>
 								</li>
 								<li class="tokenomics__item">
 									<a href="#" class="tokenomics__inner-item">
 										<div class="tokenomics__decor-block"></div>
-										<h5 class="tokenomics__title">NFT <span data-color="#0096F2">15%</span></h5>
+										<h5 class="tokenomics__title">NFT <span data-color="#0096F2" data-tokenomics-value="15">15%</span></h5>
 										<p class="tokenomics__text">Thanks to our ecosystem you will be able to earn passively and actively</p>
 									</a>
 								</li>
@@ -600,13 +761,94 @@
 					</div>
 				</div>
 			</div>
+			<div data-watch data-watch-once data-watch-threshold="0.2" class="page__qoustions questions">
+				<div class="questions__container">
+					<div class="questions__header header-titles header-titles_anim-before">
+						<h2 class="header-titles__title" id="questions">Frequently Asked Questions</h2>
+					</div>
+					<div data-spollers class="questions__spollers spollers">
+						<div class="spollers__item">
+							<button type="button" data-spoller class="spollers__title">Where can I buy tokens and NFTs of SpiderShib Inu?</button>
+							<div class="spollers__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae labore recusandae omnis molestiae doloribus explicabo aut aliquid
+								corporis est consectetur ratione quo consequatur consequuntur velit repellendus, neque culpa tempore provident?</div>
+						</div>
+						<div class="spollers__item">
+							<button type="button" data-spoller class="spollers__title">Where can I buy tokens and NFTs of SpiderShib Inu?</button>
+							<div class="spollers__body">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam, tenetur possimus rem, dolorum provident odit aspernatur amet modi
+								commodi voluptate consectetur mollitia. Tempora beatae quis voluptatum officiis veritatis earum dolores?</div>
+						</div>
+						<div class="spollers__item">
+							<button type="button" data-spoller class="spollers__title">Where can I buy tokens and NFTs of SpiderShib Inu?</button>
+							<div class="spollers__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus dolores corrupti, cupiditate debitis vel aspernatur vitae, in
+								cumque maxime ea at, expedita rem amet veritatis eveniet eaque error dolore numquam. Adipisci, quia molestias error amet nesciunt enim in quas nostrum iusto
+								quidem soluta, magni, modi ipsum fugit doloremque molestiae. Maiores.</div>
+						</div>
+						<div class="spollers__item">
+							<button type="button" data-spoller class="spollers__title">Where can I buy tokens and NFTs of SpiderShib Inu?</button>
+							<div class="spollers__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsum dignissimos error sunt, inventore et.</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div data-watch data-watch-once data-watch-threshold="0.2" class="page__community community">
+				<div class="community__container community__container_before-item">
+					<div class="community__header header-titles">
+						<h2 class="header-titles__title" id="community">Frequently Asked Questions</h2>
+					</div>
+					<div class="community__body">
+						<ul class="community__list list-community">
+							<li class="list-community__item">
+								<a href="#" class="list-community__link">
+									<img src="img/icons/community/telegram.svg" alt="telegram icon">
+								</a>
+							</li>
+							<li class="list-community__item">
+								<a href="#" class="list-community__link">
+									<img src="img/icons/community/twitter.svg" alt="twitter icon">
+								</a>
+							</li>
+							<li class="list-community__item">
+								<a href="#" class="list-community__link">
+									<img src="img/icons/community/tel.svg" alt="tel icon">
+								</a>
+							</li>
+							<li class="list-community__item">
+								<a href="#" class="list-community__link">
+									<img src="img/icons/community/facebook.svg" alt="facebook icon">
+								</a>
+							</li>
+							<li class="list-community__item">
+								<a href="#" class="list-community__link">
+									<img src="img/icons/community/m.svg" alt="m icon">
+								</a>
+							</li>
+							<li class="list-community__item">
+								<a href="#" class="list-community__link">
+									<img src="img/icons/community/instagram.svg" alt="instagram icon">
+								</a>
+							</li>
+						</ul>
+						<div class="community__bottom">
+							<div class="community__shiba">
+								<img src="img/icons/spidershiba.svg" alt="spidershiba picture">
+							</div>
+							<div class="community__address address-contact">
+								<p class="address-contact__name">Contract address:</p>
+								<p class="address-contact__address">0xe4C6E7a0F696Fb2356A187020eb13E742792Fdcc</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</main>
 		<footer class="footer">
 			<div class="footer__container">
+				<p class="footer__copy">Copyright © 2021 SpiderShiba Inu. All Rights Reserved.</p>
+				<p class="footer__development">Development Nilline 2022</p>
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20221020091544"></script>
+	<script src="js/app.min.js?_v=20221022212217"></script>
 </body>
 
 </html>
