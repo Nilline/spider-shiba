@@ -484,13 +484,7 @@ body {
   left: 0;
   width: 100%;
   z-index: 50;
-  transition: transform 0.3s ease 0s, background-color 0.3s ease 0s;
-}
-.header._scroll {
-  background-color: rgba(16, 25, 50, 0.9);
-}
-._scroll-down .header._scroll {
-  transform: translateY(-100%);
+  transition: transform 0.3s ease 0s, padding 0.3s ease 0s, background-color 0.3s ease 0s;
 }
 @media (min-width: 61.99875em) {
   .header {
@@ -501,6 +495,13 @@ body {
   .header {
     padding: 1.0625rem 0;
   }
+}
+.header._scroll {
+  padding: 0.9375rem 0;
+  background-color: rgba(16, 25, 50, 0.9);
+}
+._scroll-down .header._scroll {
+  transform: translateY(-100%);
 }
 .header__container {
   display: flex;
